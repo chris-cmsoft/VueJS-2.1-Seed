@@ -2,6 +2,7 @@
   <div id="app">
     <img src="./assets/logo.png">
     <hello></hello>
+    <span>
   </div>
 </template>
 

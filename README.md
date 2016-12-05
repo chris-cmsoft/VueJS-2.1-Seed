@@ -21,27 +21,27 @@ yarn install
 
 ### Serve with hot reload at [http://localhost:8080](http://localhost:8080)
 ``` bash
-yarn run dev
+npm run dev
 ```
 
 ### build for production with minification
 ``` bash
-yarn run build
+npm run build
 ```
 
 ### run unit tests
 ``` bash
-yarn run unit
+npm run unit
 ```
 
 ### run e2e tests
 ``` bash
-yarn run e2e
+npm run e2e
 ```
 
 ### run all tests
 ``` bash
-yarn test
+npm test
 ```
 
 ### Project Tech
