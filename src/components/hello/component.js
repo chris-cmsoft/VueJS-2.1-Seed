@@ -1,8 +1,8 @@
 export default {
   name: 'hello',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js Appssssadas',
-    };
+  computed: {
+    msg() {
+      return this.$store.state.itemCount.counter;
+    },
   },
 };
