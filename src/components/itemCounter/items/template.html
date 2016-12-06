@@ -1,0 +1,12 @@
+<div>
+  <div class="form-group">
+    <input v-model.trim="newItem" placeholder="Item">
+  </div>
+  <button v-on:click="addItem()" class="btn btn-default">Add Item</button>
+  <h1>{{count}}</h1>
+  <ul class="list-group">
+    <li class="list-group-item" v-for="item in items">
+      {{ item.name }}
+    </li>
+  </ul>
+</div>

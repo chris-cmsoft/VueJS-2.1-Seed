@@ -1,24 +1,12 @@
-
-
 import Vue from 'vue';
 import Vuex from 'vuex';
+
+import ItemCounter from './modules/item-counter';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    itemCount: {
-      counter: 0,
-    },
-  },
-  getters: {
-    counter: (state) => {
-      const counter = state.itemCount.counter;
-      return counter;
-    },
-  },
-  /* eslint no-param-reassign: ["error", { "props": false }]*/
-  mutations: {
-    increment: state => (state.itemCount.counter += 1),
+  modules: {
+    itemCount: ItemCounter,
   },
 });
