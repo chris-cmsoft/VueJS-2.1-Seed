@@ -5,8 +5,12 @@
   <button v-on:click="addItem()" class="btn btn-default">Add Item</button>
   <h1>{{count}}</h1>
   <ul class="list-group">
-    <li class="list-group-item" v-for="item in items">
-      {{ item.name }}
+    <li class="list-group-item" v-bind:class="[item.loading ? 'loading' : '']" v-for="item in items">
+      <spinner v-bind:active="item.loading" size="xs" />
+      <div v-show="!item.loading">
+        {{ item.name }}
+      </div>
     </li>
   </ul>
+
 </div>

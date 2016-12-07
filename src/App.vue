@@ -34,7 +34,6 @@
 import Hello from './components/Hello';
 import Welcome from './components/Welcome';
 import Count from './components/Count';
-
 import store from './store';
 
 export default {

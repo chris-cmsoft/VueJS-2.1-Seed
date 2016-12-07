@@ -3,6 +3,7 @@ export default {
   data() {
     return {
       newItem: '',
+      loading: false,
     };
   },
   computed: {
@@ -15,9 +16,11 @@ export default {
   },
   methods: {
     addItem() {
-
-      this.$store.dispatch('addItemCountItem', {name: this.newItem});
-      this.newItem = '';
+      this.loading = true;
+      this.$store.dispatch('addItemCountItem', {name: this.newItem}).then((data) => {
+        // console.log(data);
+        this.newItem = '';
+      });
     },
   },
 };

@@ -7,7 +7,6 @@ import router from './router';
 // Tell vue to include Router
 Vue.use(VueRouter);
 
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
