@@ -7,7 +7,7 @@ export default {
   },
   mutations: {
     addItem: (state, item) => {
-      const itemId = new Date().getTime();)
+      const itemId = new Date().getTime();
       const itemObject = {
         id: itemId,
         name: item.name,
