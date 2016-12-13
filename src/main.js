@@ -12,6 +12,18 @@ Vue.use(VueRouter);
 
 Vue.use(VueResource);
 
+
+Vue.http.interceptors.push((request, next) => {
+  store.dispatch('getAuthHeaders')
+    .then((headers) => {
+      const headerMap = new Map(Object.entries(headers));
+      headerMap.forEach((value, key) => {
+        request.headers.append(key, value);
+      });
+      next();
+    });
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -19,7 +31,4 @@ new Vue({
   components: { App },
   router,
   store,
-  http: {
-    root: 'http://userservice.staging.tangentmicroservices.com/',
-  },
 });

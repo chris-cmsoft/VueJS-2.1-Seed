@@ -24,5 +24,18 @@ export default {
         reject();
       }
     }),
+    getAuthHeaders: ({ dispatch }) => new Promise((resolve) => {
+      let headers = {};
+      dispatch('isLoggedIn')
+        .then(() => {
+          const token = sessionStorage.getItem('token');
+          headers = {
+            Authorization: `Token ${token}`,
+          };
+          resolve(headers);
+        }, () => {
+          resolve({});
+        });
+    }),
   },
 };
