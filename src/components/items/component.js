@@ -7,9 +7,6 @@ export default {
     };
   },
   computed: {
-    count() {
-      return this.$store.getters.itemCountCounter;
-    },
     items() {
       return this.$store.state.itemCount.items;
     },
@@ -17,8 +14,7 @@ export default {
   methods: {
     addItem() {
       this.loading = true;
-      this.$store.dispatch('addItemCountItem', {name: this.newItem}).then((data) => {
-        // console.log(data);
+      this.$store.dispatch('addItemCountItem', { name: this.newItem }).then(() => {
         this.newItem = '';
       });
     },

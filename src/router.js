@@ -1,6 +1,10 @@
 import VueRouter from 'vue-router';
 
-import Items from './components/itemCounter/Items';
+import Items from './components/Items';
+import Count from './components/Count';
+import Login from './components/Login';
+import Home from './components/Home';
+import store from './store';
 
 // 2. Define some routes
 // Each route should map to a component. The "component" can
@@ -9,28 +13,33 @@ import Items from './components/itemCounter/Items';
 // We'll talk about nested routes later.
 const routes = [
   {
-    path: '/items',
-    name: 'items',
-    component: Items,
-    meta: {
-      isGuestRoute: true,
-    },
+    path: '/',
+    component: Home,
+    children: [
+      {
+        path: '/',
+        name: 'items',
+        component: Items,
+      },
+      {
+        path: '/count',
+        name: 'count',
+        component: Count,
+      },
+    ],
   },
   {
     path: '/login',
     name: 'login',
-    component: Items,
+    component: Login,
     meta: {
       isGuestRoute: true,
     },
   },
 ];
 
-// 3. Create the router instance and pass the `routes` option
-// You can pass in additional options here, but let's
-// keep it simple for now.
 const router = new VueRouter({
-  routes, // short for routes: routes
+  routes,
 });
 
 router.match({
@@ -38,10 +47,12 @@ router.match({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.isGuestRoute !== true) {
-    if (sessionStorage.getItem('token') === null) {
-      next('/login');
-    }
+  if (!to.meta.isGuestRoute) {
+    store.dispatch('isLoggedIn')
+      .then(
+        () => next(),
+        () => next('/login')
+      );
   }
   next();
 });

@@ -1,13 +1,8 @@
 export default {
-  name: 'hello',
-  data() {
-    return {
-      msg: 'Hello Template',
-    };
-  },
+  name: 'count',
   computed: {
     count() {
-      return store.state.count
-    }
+      return this.$store.getters.itemCount;
+    },
   },
 };

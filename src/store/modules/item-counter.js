@@ -1,9 +1,10 @@
 export default {
   state: {
     items: [],
+    itemCount: 0,
   },
   getters: {
-    itemCountCounter: state => state.items.filter(item => item.loading === false).length,
+    itemCount: state => state.items.filter(item => item.loading === false).length,
   },
   mutations: {
     addItem: (state, item) => {
