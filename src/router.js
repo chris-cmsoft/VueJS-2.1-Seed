@@ -12,6 +12,17 @@ const routes = [
     path: '/items',
     name: 'items',
     component: Items,
+    meta: {
+      isGuestRoute: true,
+    },
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Items,
+    meta: {
+      isGuestRoute: true,
+    },
   },
 ];
 
@@ -20,6 +31,19 @@ const routes = [
 // keep it simple for now.
 const router = new VueRouter({
   routes, // short for routes: routes
+});
+
+router.match({
+  '*': '/',
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.isGuestRoute !== true) {
+    if (sessionStorage.getItem('token') === null) {
+      next('/login');
+    }
+  }
+  next();
 });
 
 export default router;
